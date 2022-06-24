@@ -74,4 +74,6 @@ const auth = () => {
         login(JSON.parse(localStorage.getItem('user')))
     }
 }
-auth()
+
+
+export default auth

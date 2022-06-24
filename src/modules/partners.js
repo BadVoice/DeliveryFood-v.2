@@ -5,11 +5,6 @@ const partners = () => {
             console.log(item)
 
 
-
-
-
-
-
         });
     }
 
@@ -25,4 +20,4 @@ const partners = () => {
 
 
 }
-partners()
+export default partners
