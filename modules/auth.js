@@ -9,6 +9,18 @@ const auth = () => {
     const passwordInput = document.getElementById('password')
     const btnOut = document.querySelector('.button-out')
     const userName = document.querySelector('.user-name')
+    const cartBtn = document.getElementById('cart-button')
+    const cartModal = document.querySelector('.modal-cart')
+    const cartClose = document.querySelector('.close')
+
+
+    cartBtn.addEventListener('click', () => {
+        cartModal.style.display = 'flex'
+    })
+
+    cartClose.addEventListener('click', () => {
+        cartModal.style.display = 'none'
+    })
 
     btnAuth.addEventListener('click', () => {
         modalAuth.style.display = 'flex'
@@ -23,7 +35,6 @@ const auth = () => {
     })
 
     const login = (user) => {
-
         btnAuth.style.display = 'none'
         btnOut.style.display = 'flex'
         userName.style.display = 'flex'
@@ -62,6 +73,5 @@ const auth = () => {
     if (localStorage.getItem('user')) {
         login(JSON.parse(localStorage.getItem('user')))
     }
-
 }
 auth()

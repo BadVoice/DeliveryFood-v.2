@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic" rel="stylesheet" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="modules/auth.js" defer></script>
+    <script src="./modules/auth.js" defer></script>
+
+
 </head>
 
 <body>
@@ -21,6 +23,7 @@
 				<input type="text" class="input input-address" placeholder="Адрес доставки"/>
 			</label>
             <div class="buttons">
+                <span class="user-name"></span>
                 <button class="button button-primary button-auth">
 					<span class="button-auth-svg"></span>
 					<span class="button-text">Войти</span>
@@ -28,6 +31,10 @@
                 <button class="button" id="cart-button">
 					<span class="button-cart-svg"></span>
 					<span class="button-text">Корзина</span>
+				</button>
+                <button class="button button-primary button-out">
+					<span class="button-text">Выйти</span>
+					<span class="button-out-svg"></span>
 				</button>
             </div>
         </header>
@@ -276,6 +283,32 @@
                     <button class="button clear-cart">Отмена</button>
                 </div>
             </div>
+            <!-- /.modal-footer -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal-auth">
+        <div class="modal-dialog modal-dialog-auth">
+            <button class="close-auth">&times;</button>
+            <form id="logInForm">
+                <fieldset class="modal-body">
+                    <legend class="modal-title">Авторизация</legend>
+                    <label class="label-auth">
+						<span>Логин</span>
+						<input id="login" type="text">
+					</label>
+                    <label class="label-auth">
+						<span>Пароль</span>
+						<input id="password" type="password">
+					</label>
+                </fieldset>
+                <!-- /.modal-body -->
+                <div class="modal-footer">
+                    <div class="footer-buttons">
+                        <button class="button button-primary button-login" type="submit">Войти</button>
+                    </div>
+                </div>
+            </form>
             <!-- /.modal-footer -->
         </div>
         <!-- /.modal-dialog -->
