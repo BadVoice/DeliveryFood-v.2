@@ -1,6 +1,7 @@
-import auth from "./modules/auth";
-import menu from "./modules/menu"
+const menu = () => {
 
 
-auth()
-menu()
+
+
+}
+export default menu

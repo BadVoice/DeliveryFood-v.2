@@ -1,13 +1,41 @@
 const partners = () => {
-
+    const cardsRest = document.querySelector('.cards-restaurants')
+    console.log(cardsRest)
     const renderendItems = (data) => {
-        data.forEach(item => {
-            console.log(item)
+
+
+        data.forEach(({ name, time_of_delivery, stars, price, kitchen, image, products }) => {
+
+            const a = document.createElement('a')
+            a.setAttribute('href', '/restaurant.html')
+            a.classList.add('card')
+            a.classList.add('cards-restaurants')
+
+            a.dataset.products = products
+
+            a.innerHTML = ` 
+            <a href="restaurant.html" class="card card-restaurant">
+                        <img src="${image}" alt="${name}" class="card-image" />
+                        <div class="card-text">
+                            <div class="card-heading">
+                                <h3 class="card-title">${name}</h3>
+                                <span class="card-tag tag"> ${time_of_delivery} мин</span>
+                            </div>
+                            <div class="card-info">
+                                <div class="rating">
+                                ${stars}
+                                </div>
+                                <div class="price">От ${price} ₽</div>
+                                <div class="category">${kitchen}</div>
+                            </div>            
+                    </a>
+                    `
+
+            cardsRest.append(a)
 
 
         });
     }
-
 
 
 
