@@ -1,10 +1,6 @@
 const partners = () => {
     const cardsRest = document.querySelector('.cards-restaurants')
-
-    cardsRest.addEventListener('click', (e) => {
-        console.log(e.target)
-    })
-
+    const modalAuth = document.querySelector('.modal-auth')
 
     const renderendItems = (data) => {
 
@@ -35,18 +31,21 @@ const partners = () => {
                     `
 
             cardsRest.append(a)
+
+            a.addEventListener('click', (e) => {
+                if (localStorage.getItem('user')) {} else {
+                    modalAuth.style.display = 'flex'
+                    e.preventDefault()
+                }
+            })
+
+
         });
     }
-
-
-
 
     fetch('https://testdelivery-d0ff4-default-rtdb.firebaseio.com/db/partners.json')
         .then(response => response.json())
         .then(data => renderendItems(data))
-
-
-
 
 }
 export default partners
