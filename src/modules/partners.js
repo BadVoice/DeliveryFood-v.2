@@ -1,11 +1,14 @@
 const partners = () => {
     const cardsRest = document.querySelector('.cards-restaurants')
-    console.log(cardsRest)
+
+    cardsRest.addEventListener('click', (e) => {
+        console.log(e.target)
+    })
+
+
     const renderendItems = (data) => {
 
-
         data.forEach(({ name, time_of_delivery, stars, price, kitchen, image, products }) => {
-
             const a = document.createElement('a')
             a.setAttribute('href', '/restaurant.html')
             a.classList.add('card')
@@ -32,8 +35,6 @@ const partners = () => {
                     `
 
             cardsRest.append(a)
-
-
         });
     }
 

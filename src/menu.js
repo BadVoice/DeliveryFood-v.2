@@ -1,6 +1,6 @@
-import auth from "./modules/auth";
-import menu from "./modules/menu"
+import auth from "./modules/auth"
+import secondMenu from "./modules/secondMenu"
 
 
 auth()
-menu()
+secondMenu()
