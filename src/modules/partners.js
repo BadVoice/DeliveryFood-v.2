@@ -4,7 +4,8 @@ const partners = () => {
 
     const renderendItems = (data) => {
 
-        data.forEach(({ name, time_of_delivery, stars, price, kitchen, image, products }) => {
+        data.forEach((item) => {
+            const { name, time_of_delivery, stars, price, kitchen, image, products } = item
             const a = document.createElement('a')
             a.setAttribute('href', '/restaurant.html')
             a.classList.add('card')
@@ -33,9 +34,14 @@ const partners = () => {
             cardsRest.append(a)
 
             a.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                localStorage.setItem('restourant', JSON.stringify(item))
+                window.location.href = '/restaurant.html'
+
                 if (localStorage.getItem('user')) {} else {
                     modalAuth.style.display = 'flex'
-                    e.preventDefault()
+
                 }
             })
 
@@ -46,6 +52,9 @@ const partners = () => {
     fetch('https://testdelivery-d0ff4-default-rtdb.firebaseio.com/db/partners.json')
         .then(response => response.json())
         .then(data => renderendItems(data))
+        .catch((error) => {
+            console.log(error)
+        })
 
 }
 export default partners
