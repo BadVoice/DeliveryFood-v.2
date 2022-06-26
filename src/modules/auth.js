@@ -10,17 +10,6 @@ const auth = () => {
     const btnOut = document.querySelector('.button-out')
     const userName = document.querySelector('.user-name')
     const cartBtn = document.getElementById('cart-button')
-    const cartModal = document.querySelector('.modal-cart')
-    const cartClose = document.querySelector('.close')
-
-
-    cartBtn.addEventListener('click', () => {
-        cartModal.style.display = 'flex'
-    })
-
-    cartClose.addEventListener('click', () => {
-        cartModal.style.display = 'none'
-    })
 
     btnAuth.addEventListener('click', () => {
         modalAuth.style.display = 'flex'
@@ -40,6 +29,7 @@ const auth = () => {
         userName.style.display = 'flex'
         userName.textContent = user.login
         modalAuth.style.display = 'none'
+        cartBtn.style.display = 'flex'
 
         if (user.login === "") {
             alert('введите логин')
@@ -57,6 +47,7 @@ const auth = () => {
         userName.style.display = 'none'
         userName.textContent = ' ';
         localStorage.removeItem('user')
+        cartBtn.style.display = 'none'
     }
 
     logInForm.addEventListener('submit', (e) => {

@@ -34,18 +34,15 @@ const partners = () => {
             cardsRest.append(a)
 
             a.addEventListener('click', (e) => {
-                e.preventDefault()
-
                 localStorage.setItem('restourant', JSON.stringify(item))
                 window.location.href = '/restaurant.html'
+                if (localStorage.getItem('user')) {
 
-                if (localStorage.getItem('user')) {} else {
+                } else {
+                    e.preventDefault()
                     modalAuth.style.display = 'flex'
-
                 }
             })
-
-
         });
     }
 
