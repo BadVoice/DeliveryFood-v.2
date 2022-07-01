@@ -1,4 +1,7 @@
 const path = require('path')
+const CompressionPlugin = require("compression-webpack-plugin")
+const BrotliPlugin = require('brotli-webpack-plugin')
+
 
 module.exports = {
     entry: {
@@ -9,5 +12,10 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
-    devtool: 'eval-source-map'
+    devtool: 'eval-source-map', 
+
+    plugins:
+     [
+         
+    ],
 }

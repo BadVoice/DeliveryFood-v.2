@@ -35,10 +35,8 @@ const secondMenu = () => {
             cartArr.push(cartItem)
         }
 
-
         localStorage.setItem('cart', JSON.stringify(cartArr))
     }
-
 
     const renderItems = (data) => {
         data.forEach(({ id, name, description, price, image }) => {
@@ -66,15 +64,12 @@ const secondMenu = () => {
         
             `
 
-
             card.querySelector('.button-add-cart').addEventListener('click', () => {
                 addToCart({ name, price, id, count: 1 })
 
             })
 
-
             cardsMenu.append(card)
-
         })
     }
 

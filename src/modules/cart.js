@@ -4,6 +4,7 @@ const cart = () => {
     const close = modalCart.querySelector('.close')
     const modalBody = modalCart.querySelector('.modal-body')
     const clearCart = modalCart.querySelector('.clear-cart')
+    const modalPrice = modalCart.querySelector('.modal-pricetag')
 
 
     const countInc = (id) => {
@@ -11,12 +12,15 @@ const cart = () => {
         cartArray.map((item) => {
             if (item.id === id) {
                 item.count++
+            } else if (item.price === price) {
+                price * item.pcount
             }
             return item
         })
 
         localStorage.setItem('cart', JSON.stringify(cartArray))
         renderItems(cartArray)
+        cartSumPrice(JSON.parse(localStorage.getItem('cart')))
     }
 
 
@@ -30,11 +34,10 @@ const cart = () => {
         })
 
         localStorage.setItem('cart', JSON.stringify(cartArray))
-        renderItems(cartArray)
+        cartSumPrice(JSON.parse(localStorage.getItem('cart')))
     }
 
     const renderItems = (data) => {
-
         modalBody.innerHTML = ''
 
         data.forEach(({ price, count, id, name }) => {
@@ -51,12 +54,17 @@ const cart = () => {
                     `
 
             modalBody.prepend(CartRow)
-
-            clearCart.addEventListener('click', () => {
-                modalBody.innerHTML = ''
-            })
-
         });
+    }
+
+    const cartSumPrice = (data) => {
+        let priceArr = []
+        data.forEach(({ price, count }) => {
+            let sumArr = price * count
+            priceArr.push(sumArr)
+        })
+        const res = priceArr.reduce((acc, inc) => acc + inc, 0)
+        modalPrice.textContent = `${res}`
     }
 
 
@@ -74,6 +82,7 @@ const cart = () => {
 
         if (localStorage.getItem('cart')) {
             renderItems(JSON.parse(localStorage.getItem('cart')))
+            cartSumPrice(JSON.parse(localStorage.getItem('cart')))
         }
 
     })
@@ -81,6 +90,6 @@ const cart = () => {
         modalCart.classList.remove('is-open')
 
     })
-
 }
+
 export default cart
