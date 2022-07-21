@@ -5,6 +5,7 @@ const cart = () => {
     const modalBody = modalCart.querySelector('.modal-body')
     const clearCart = modalCart.querySelector('.clear-cart')
     const modalPrice = modalCart.querySelector('.modal-pricetag')
+    const foodPrice = modalCart.querySelector('.food-price')
 
 
     const countInc = (id) => {
@@ -12,8 +13,6 @@ const cart = () => {
         cartArray.map((item) => {
             if (item.id === id) {
                 item.count++
-            } else if (item.price === price) {
-                price * item.pcount
             }
             return item
         })
@@ -21,6 +20,7 @@ const cart = () => {
         localStorage.setItem('cart', JSON.stringify(cartArray))
         renderItems(cartArray)
         cartSumPrice(JSON.parse(localStorage.getItem('cart')))
+        cartFoodPrice(JSON.parse(localStorage.getItem('cart')))
     }
 
 
@@ -34,7 +34,9 @@ const cart = () => {
         })
 
         localStorage.setItem('cart', JSON.stringify(cartArray))
+        renderItems(cartArray)
         cartSumPrice(JSON.parse(localStorage.getItem('cart')))
+        cartFoodPrice(JSON.parse(localStorage.getItem('cart')))
     }
 
     const renderItems = (data) => {
@@ -59,12 +61,50 @@ const cart = () => {
 
     const cartSumPrice = (data) => {
         let priceArr = []
+
         data.forEach(({ price, count }) => {
             let sumArr = price * count
             priceArr.push(sumArr)
+
+
         })
         const res = priceArr.reduce((acc, inc) => acc + inc, 0)
         modalPrice.textContent = `${res}`
+
+
+    }
+
+
+    const cartFoodPrice = (data) => {
+        let priceCart = []
+            // data.forEach(({ price, count, id }) => {
+
+        //     if (id ) {
+        //         let priceFood = price * count
+        //         priceCart.push(priceFood)
+        //     }
+
+        //     //    if (id == price)
+
+
+        // })
+
+
+        // let emptyArr = []
+        // priceCart.map((value, i) => {
+        //     if (value === priceCart[i]) {
+        //         let result = value
+
+        //         emptyArr.push(result)
+        //     }
+        // })
+
+        // emptyArr.filter((value, i) => {
+
+        //     if ()
+
+        //     // foodPrice.textContent = `${emptyArr}`
+        // })
     }
 
 
@@ -83,6 +123,7 @@ const cart = () => {
         if (localStorage.getItem('cart')) {
             renderItems(JSON.parse(localStorage.getItem('cart')))
             cartSumPrice(JSON.parse(localStorage.getItem('cart')))
+            cartFoodPrice(JSON.parse(localStorage.getItem('cart')))
         }
 
     })

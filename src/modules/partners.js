@@ -46,7 +46,7 @@ const partners = () => {
         });
     }
 
-    fetch('https://testdelivery-d0ff4-default-rtdb.firebaseio.com/db/partners.json')
+    fetch('https://testdelivery21-07-default-rtdb.firebaseio.com/db/partners.json')
         .then(response => response.json())
         .then(data => renderendItems(data))
         .catch((error) => {
